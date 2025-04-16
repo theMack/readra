@@ -1,0 +1,41 @@
+// src/components/Button/ButtonGroup.scss
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.button-group {
+  display: inline-flex;
+  flex-direction: row;
+  
+  &--vertical {
+    flex-direction: column;
+    
+    .button {
+      &--grouped {
+        margin: -1px 0;
+      }
+      
+      &--grouped-start {
+        border-radius: 0;
+        border-top-left-radius: $border-radius-md;
+        border-top-right-radius: $border-radius-md;
+        margin-top: 0;
+      }
+      
+      &--grouped-end {
+        border-radius: 0;
+        border-bottom-left-radius: $border-radius-md;
+        border-bottom-right-radius: $border-radius-md;
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  &--full-width {
+    display: flex;
+    width: 100%;
+    
+    .button {
+      flex: 1;
+    }
+  }
+}

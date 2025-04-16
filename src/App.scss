@@ -1,0 +1,32 @@
+// src/App.scss
+@import './styles/variables';
+@import './styles/mixins';
+
+.app {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacing-lg;
+}
+
+.section {
+  margin-bottom: $spacing-xl;
+  
+  h2 {
+    margin-bottom: $spacing-md;
+    color: $dark-color;
+    border-bottom: 1px solid rgba($dark-color, 0.1);
+    padding-bottom: $spacing-xs;
+  }
+}
+
+.button-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-md;
+  align-items: center;
+  margin-bottom: $spacing-lg;
+  
+  > * {
+    margin-bottom: $spacing-sm;
+  }
+}

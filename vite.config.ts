@@ -1,5 +1,7 @@
-import { defineConfig } from 'vite'
-import * as reactPlugin from '@vitejs/plugin-react'
+
+import { defineConfig } from 'vite';
+// @ts-ignore
+import reactPlugin from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [reactPlugin()],
@@ -7,5 +9,5 @@ export default defineConfig({
     alias: {
       '@': '/src',
     },
-  },
-})
+  }
+});
