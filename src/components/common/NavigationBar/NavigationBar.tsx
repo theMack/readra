@@ -68,6 +68,7 @@ const NavigationBar: React.FC<NavigationBarProps> = ({
                   <span>{userProfile?.name}</span>
                 )}
               </Link>
+              
             </>
           ) : (
             <Link to="/login" className="navbar__link navbar__link--button">

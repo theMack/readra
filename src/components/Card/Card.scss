@@ -1,5 +1,7 @@
+@use 'sass:color';
 @import '../../styles/variables';
 @import '../../styles/mixins';
+
 
 .card {
   display: flex;
@@ -171,7 +173,7 @@
 // Dark mode adjustments (if implemented later)
 .dark-mode {
   .card {
-    background-color: darken($dark-color, 5%);
+    background-color: color.scale($dark-color, $lightness: -5%);
     
     &--bordered {
       border-color: rgba($light-color, 0.2);
@@ -182,7 +184,7 @@
     }
     
     &__subtitle {
-      color: darken($light-color, 20%);
+      color: color.scale($light-color, $lightness: -20%);
     }
     
     &__header,

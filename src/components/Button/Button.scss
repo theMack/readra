@@ -1,4 +1,5 @@
 // src/components/Button/Button.scss
+@use 'sass:color';
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
@@ -25,13 +26,13 @@
     color: $light-color;
     
     &:hover:not(:disabled) {
-      background-color: darken($primary-color, 8%);
+      background-color: color.scale($primary-color, $lightness: -8%);
       transform: translateY(-1px);
       box-shadow: $box-shadow-sm;
     }
     
     &:active:not(:disabled) {
-      background-color: darken($primary-color, 12%);
+      background-color: color.scale($primary-color, $lightness: -12%);
       transform: translateY(0);
       box-shadow: none;
     }
@@ -42,13 +43,13 @@
     color: $light-color;
     
     &:hover:not(:disabled) {
-      background-color: darken($secondary-color, 8%);
+      background-color: color.scale($secondary-color, $lightness: -8%);
       transform: translateY(-1px);
       box-shadow: $box-shadow-sm;
     }
     
     &:active:not(:disabled) {
-      background-color: darken($secondary-color, 12%);
+      background-color: color.scale($secondary-color, $lightness: -12%);;
       transform: translateY(0);
       box-shadow: none;
     }
@@ -59,13 +60,13 @@
     color: $dark-color;
     
     &:hover:not(:disabled) {
-      background-color: darken($accent-color, 8%);
+      background-color: color.scale($accent-color, $lightness: -8%);
       transform: translateY(-1px);
       box-shadow: $box-shadow-sm;
     }
     
     &:active:not(:disabled) {
-      background-color: darken($accent-color, 12%);
+      background-color: color.scale($accent-color, $lightness: -12%);
       transform: translateY(0);
       box-shadow: none;
     }
