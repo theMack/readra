@@ -1,0 +1,287 @@
+// src/components/common/NavigationBar/NavigationBar.scss
+
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.navbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: $light-color;
+  z-index: $z-index-sticky;
+  transition: $transition-base;
+  
+  &--scrolled {
+    box-shadow: $box-shadow-sm;
+  }
+  
+  &__container {
+    @include content-container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding-top: $spacing-sm;
+    padding-bottom: $spacing-sm;
+  }
+  
+  &__brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  &__logo {
+    font-family: $font-family-heading;
+    font-size: 1.5rem;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    text-decoration: none;
+    
+    &:hover {
+      color: darken($primary-color, 10%);
+    }
+  }
+  
+  // Mobile menu toggle
+  &__toggle {
+    display: none;
+    background: none;
+    border: none;
+    width: 28px;
+    height: 28px;
+    position: relative;
+    cursor: pointer;
+    
+    @include responsive(md) {
+      display: block;
+    }
+    
+    &-icon {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background-color: $dark-color;
+      transition: $transition-base;
+      
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $dark-color;
+        transition: $transition-base;
+      }
+      
+      &::before {
+        top: -8px;
+      }
+      
+      &::after {
+        bottom: -8px;
+      }
+    }
+    
+    // Toggle animation
+    &[aria-expanded="true"] {
+      .navbar__toggle-icon {
+        background-color: transparent;
+        
+        &::before {
+          transform: translateY(8px) rotate(45deg);
+        }
+        
+        &::after {
+          transform: translateY(-8px) rotate(-45deg);
+        }
+      }
+    }
+  }
+  
+  // Main menu container
+  &__menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    margin-left: $spacing-xl;
+    
+    @include responsive(md) {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background-color: $light-color;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      height: 0;
+      overflow: hidden;
+      visibility: hidden;
+      opacity: 0;
+      margin-left: 0;
+      transition: $transition-base;
+      box-shadow: $box-shadow-sm;
+      
+      &--open {
+        height: auto;
+        visibility: visible;
+        opacity: 1;
+        padding: $spacing-md 0;
+      }
+    }
+  }
+  
+  // Navigation items
+  &__nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    @include responsive(md) {
+      flex-direction: column;
+      width: 100%;
+    }
+  }
+  
+  &__item {
+    margin-right: $spacing-lg;
+    
+    @include responsive(md) {
+      margin-right: 0;
+      width: 100%;
+    }
+  }
+  
+  &__link {
+    display: inline-block;
+    padding: $spacing-xs $spacing-sm;
+    color: $dark-color;
+    text-decoration: none;
+    font-weight: $font-weight-medium;
+    transition: $transition-base;
+    border-bottom: 2px solid transparent;
+    
+    &:hover {
+      color: $primary-color;
+    }
+    
+    &--active {
+      color: $primary-color;
+      border-bottom-color: $primary-color;
+    }
+    
+    @include responsive(md) {
+      display: block;
+      padding: $spacing-sm $spacing-md;
+      border-bottom: none;
+      border-left: 3px solid transparent;
+      
+      &--active {
+        border-bottom-color: transparent;
+        border-left-color: $primary-color;
+        background-color: rgba($primary-color, 0.05);
+      }
+    }
+  }
+  
+  // Action buttons (search, accessibility, etc.)
+  &__actions {
+    display: flex;
+    align-items: center;
+    
+    @include responsive(md) {
+      width: 100%;
+      justify-content: center;
+      margin-top: $spacing-md;
+      padding: $spacing-sm $spacing-md;
+      border-top: 1px solid rgba($dark-color, 0.1);
+    }
+  }
+  
+  &__action-btn {
+    background: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: $border-radius-circle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $dark-color;
+    cursor: pointer;
+    transition: $transition-base;
+    
+    &:hover {
+      background-color: rgba($dark-color, 0.05);
+      color: $primary-color;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid $primary-color;
+      outline-offset: 2px;
+    }
+    
+    & + & {
+      margin-left: $spacing-xs;
+    }
+  }
+  
+  // User related elements
+  &__auth-buttons {
+    display: flex;
+    align-items: center;
+    margin-left: $spacing-sm;
+    
+    > * + * {
+      margin-left: $spacing-xs;
+    }
+  }
+  
+  &__user-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin-left: $spacing-sm;
+  }
+  
+  &__avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: $border-radius-circle;
+    object-fit: cover;
+    
+    &--placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $primary-color;
+      color: $light-color;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+// High contrast mode adjustments
+.high-contrast {
+  .navbar {
+    border-bottom: 1px solid var(--dark-color);
+    box-shadow: none;
+    
+    &__link {
+      text-decoration: underline;
+      
+      &--active {
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}

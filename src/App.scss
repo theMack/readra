@@ -3,7 +3,7 @@
 @import './styles/mixins';
 
 .app {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: $spacing-lg;
 }
@@ -17,6 +17,10 @@
     border-bottom: 1px solid rgba($dark-color, 0.1);
     padding-bottom: $spacing-xs;
   }
+  
+  h3 {
+    margin: $spacing-lg 0 $spacing-md;
+  }
 }
 
 .button-showcase {
@@ -29,4 +33,11 @@
   > * {
     margin-bottom: $spacing-sm;
   }
+}
+
+.card-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: $spacing-lg;
+  margin-bottom: $spacing-lg;
 }

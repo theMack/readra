@@ -1,0 +1,202 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: $light-color;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  width: 100%;
+  
+  // Elevation variants
+  &--elevated {
+    box-shadow: $box-shadow-sm;
+    transition: $transition-base;
+  }
+  
+  // Border variant
+  &--bordered {
+    border: 1px solid rgba($dark-color, 0.1);
+  }
+  
+  // Interactive states
+  &--interactive {
+    cursor: pointer;
+    transition: $transition-base;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $box-shadow-md;
+    }
+    
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: $box-shadow-sm;
+    }
+    
+    // Outline for keyboard navigation
+    &:focus-visible {
+      outline: 2px solid $primary-color;
+      outline-offset: 2px;
+    }
+  }
+  
+  // Height variants
+  &--full-height {
+    height: 100%;
+  }
+  
+  // Padding variants
+  &--padding-none {
+    .card__body,
+    .card__header,
+    .card__footer {
+      padding: 0;
+    }
+  }
+  
+  &--padding-small {
+    .card__body,
+    .card__header,
+    .card__footer {
+      padding: $spacing-sm;
+    }
+  }
+  
+  &--padding-medium {
+    .card__body,
+    .card__header,
+    .card__footer {
+      padding: $spacing-md;
+    }
+  }
+  
+  &--padding-large {
+    .card__body,
+    .card__header,
+    .card__footer {
+      padding: $spacing-lg;
+    }
+  }
+  
+  // Image container
+  &__image-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 56.25%; // 16:9 aspect ratio
+    }
+  }
+  
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    
+    .card--interactive:hover & {
+      transform: scale(1.05);
+    }
+  }
+  
+  // Header styles
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba($dark-color, 0.05);
+  }
+  
+  &__header-content {
+    flex: 1;
+  }
+  
+  &__title {
+    font-size: 1.25rem;
+    font-weight: $font-weight-bold;
+    margin: 0 0 $spacing-xs 0;
+    color: $dark-color;
+  }
+  
+  &__subtitle {
+    font-size: 0.875rem;
+    color: $text-light;
+    margin: 0;
+  }
+  
+  &__header-actions {
+    margin-left: $spacing-sm;
+    display: flex;
+    align-items: center;
+  }
+  
+  // Body styles
+  &__body {
+    flex: 1;
+  }
+  
+  // Footer styles
+  &__footer {
+    border-top: 1px solid rgba($dark-color, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+// Accessibility adjustments
+.high-contrast {
+  .card {
+    border: 1px solid var(--dark-color);
+    
+    &--elevated {
+      box-shadow: none;
+    }
+    
+    &__header,
+    &__footer {
+      border-color: var(--dark-color);
+    }
+  }
+}
+
+// Dark mode adjustments (if implemented later)
+.dark-mode {
+  .card {
+    background-color: darken($dark-color, 5%);
+    
+    &--bordered {
+      border-color: rgba($light-color, 0.2);
+    }
+    
+    &__title {
+      color: $light-color;
+    }
+    
+    &__subtitle {
+      color: darken($light-color, 20%);
+    }
+    
+    &__header,
+    &__footer {
+      border-color: rgba($light-color, 0.1);
+    }
+  }
+}
+
+// Responsive adjustments
+@include responsive(xs) {
+  .card {
+    &__title {
+      font-size: 1.125rem;
+    }
+  }
+}
