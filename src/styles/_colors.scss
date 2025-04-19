@@ -1,0 +1,17 @@
+// src/styles/_colors.scss
+// Color variables for the project
+// This file contains the color variables used throughout the project
+
+$primary-color: #3a86ff;
+$secondary-color: #8338ec;
+$accent-color: #ff006e;
+$success-color: #06d6a0;
+$warning-color: #ffbe0b;
+$error-color: #ef476f;
+$text-color: #2b2d42;
+$background-color: #ffffff;
+$surface-color: #f8f9fa;
+
+// You can also define color palettes
+$primary-light: lighten($primary-color, 20%);
+$primary-dark: darken($primary-color, 20%);

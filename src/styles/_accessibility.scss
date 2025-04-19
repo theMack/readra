@@ -1,0 +1,121 @@
+// src/styles/_accessibility.scss@use './tokens';
+// Focus outline for keyboard navigation
+@mixin focus-outline {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// Visually hide an element but keep it accessible to screen readers
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Skip link for keyboard users to bypass navigation
+.skip-link {
+  @include visually-hidden;
+  
+  &:focus {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    color: $primary-color;
+    font-weight: 600;
+    clip: auto;
+    z-index: 9999;
+    @include focus-outline;
+  }
+}
+
+// High contrast text
+@mixin high-contrast-text($bg-color) {
+  @if (lightness($bg-color) > 50) {
+    color: $text-primary;
+  } @else {
+    color: white;
+  }
+}
+
+// Improved focus styles for interactive elements
+@mixin interactive-focus {
+  &:focus-visible {
+    @include focus-outline;
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// Support for reduced motion
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// Making sure touch targets are large enough
+@mixin touch-target {
+  min-width: 44px;
+  min-height: 44px;
+  
+  // Make sure inline elements have proper padding
+  &:not(button):not([role="button"]) {
+    padding: 12px;
+  }
+}
+
+// Accessible form labels
+@mixin form-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  color: $text-primary;
+}
+
+// Screen reader only announcement
+.sr-announcement {
+  @include visually-hidden;
+}
+
+// Add these as separate classes instead of empty rulesets
+.sr-announcement-polite {
+  @include visually-hidden;
+}
+
+.sr-announcement-assertive {
+  @include visually-hidden;
+}
+
+// Style links so they're identifiable without relying solely on color
+@mixin accessible-link {
+  color: $primary-color;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  
+  &:hover {
+    text-decoration-thickness: 2px;
+  }
+  
+  &:focus {
+    @include focus-outline;
+  }
+}
+
+// Focus within utility
+@mixin focus-within {
+  &:focus-within {
+    @content;
+  }
+}

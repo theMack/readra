@@ -1,0 +1,83 @@
+@forward 'colors';
+@forward 'typography';
+
+// ========== COLOR UTILITIES ==========
+
+// Brand colors
+$primary-color: #4a6cf7;
+$secondary-color: #ff6b6b;
+$tertiary-color: #6c5ce7;
+
+// Text Colors
+@mixin text-primary { color: vars.$text-primary; }
+@mixin text-secondary { color: vars.$text-secondary; }
+@mixin text-light { color: vars.$text-light; }
+@mixin text-on-dark { color: vars.$light-color; }
+
+// Background Colors
+@mixin bg-light { background-color: vars.$background-light; }
+@mixin bg-medium { background-color: vars.$background-medium; }
+@mixin bg-dark { background-color: vars.$background-dark; }
+@mixin bg-brand { background-color: vars.$primary-color; }
+@mixin bg-secondary { background-color: vars.$secondary-color; }
+@mixin bg-tertiary { background-color: vars.$tertiary-color; }
+
+// Border Colors
+@mixin border-default { border: 1px solid vars.$border-color; }
+@mixin border-light { border: 1px solid lighten(vars.$border-color, 10%); }
+@mixin border-dark { border: 1px solid darken(vars.$border-color, 10%); }
+
+// Status Backgrounds
+@mixin bg-success { background-color: vars.$success-color; }
+@mixin bg-warning { background-color: vars.$warning-color; }
+@mixin bg-error { background-color: vars.$error-color; }
+@mixin bg-info { background-color: vars.$info-color; }
+
+// Text on status backgrounds
+@mixin text-on-success { color: vars.$light-color; }
+@mixin text-on-warning { color: vars.$dark-color; }
+@mixin text-on-error { color: vars.$light-color; }
+@mixin text-on-info { color: vars.$light-color; }
+
+// ========== THEME MODES ==========
+
+@mixin theme-light {
+  background-color: vars.$background-light;
+  color: vars.$text-primary;
+}
+
+@mixin theme-dark {
+  background-color: vars.$dark-color;
+  color: vars.$text-light;
+}
+
+// ========== BUTTON STATUS STYLES ==========
+
+@mixin button-status($color) {
+  @include button-base;
+  background-color: $color;
+  color: vars.$light-color;
+
+  &:hover {
+    background-color: color.adjust($color, $lightness: -10%);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color, 0.4);
+  }
+
+  &:active {
+    background-color: color.adjust($color, $lightness: -15%);
+  }
+
+  &:disabled {
+    background-color: color.adjust($color, $lightness: 20%);
+    cursor: not-allowed;
+  }
+}
+
+@mixin button-success { @include button-status(vars.$success-color); }
+@mixin button-warning { @include button-status(vars.$warning-color); }
+@mixin button-error   { @include button-status(vars.$error-color); }
+@mixin button-info    { @include button-status(vars.$info-color); }

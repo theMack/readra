@@ -1,98 +1,59 @@
+// src/components/Card/Card.scss
 @use 'sass:color';
-@import '../../styles/variables';
-@import '../../styles/mixins';
-
+@use '../../styles/variables';
+@use '../../styles/mixins';
 
 .card {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  background-color: $light-color;
-  border-radius: $border-radius-md;
-  overflow: hidden;
-  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   
-  // Elevation variants
-  &--elevated {
-    box-shadow: $box-shadow-sm;
-    transition: $transition-base;
+  // Elevation levels
+  &--elevation-0 {
+    box-shadow: none;
+    border: 1px solid #dee2e6;
   }
   
-  // Border variant
-  &--bordered {
-    border: 1px solid rgba($dark-color, 0.1);
+  &--elevation-1 {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   }
   
-  // Interactive states
-  &--interactive {
+  &--elevation-2 {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  &--elevation-3 {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  // Clickable card styles
+  &--clickable {
     cursor: pointer;
-    transition: $transition-base;
     
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: $box-shadow-md;
+      transform: translateY(-4px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
     &:active {
-      transform: translateY(-1px);
-      box-shadow: $box-shadow-sm;
+      transform: translateY(-2px);
     }
     
-    // Outline for keyboard navigation
-    &:focus-visible {
-      outline: 2px solid $primary-color;
+    &:focus {
+      outline: 2px solid #4a6cf7;
       outline-offset: 2px;
     }
   }
   
-  // Height variants
-  &--full-height {
-    height: 100%;
-  }
-  
-  // Padding variants
-  &--padding-none {
-    .card__body,
-    .card__header,
-    .card__footer {
-      padding: 0;
-    }
-  }
-  
-  &--padding-small {
-    .card__body,
-    .card__header,
-    .card__footer {
-      padding: $spacing-sm;
-    }
-  }
-  
-  &--padding-medium {
-    .card__body,
-    .card__header,
-    .card__footer {
-      padding: $spacing-md;
-    }
-  }
-  
-  &--padding-large {
-    .card__body,
-    .card__header,
-    .card__footer {
-      padding: $spacing-lg;
-    }
-  }
-  
-  // Image container
   &__image-container {
-    width: 100%;
-    overflow: hidden;
     position: relative;
-    
-    &::before {
-      content: "";
-      display: block;
-      padding-top: 56.25%; // 16:9 aspect ratio
-    }
+    height: 0;
+    padding-bottom: 56.25%; // 16:9 aspect ratio
+    overflow: hidden;
   }
   
   &__image {
@@ -104,101 +65,35 @@
     object-fit: cover;
     transition: transform 0.3s ease;
     
-    .card--interactive:hover & {
+    .card--clickable:hover & {
       transform: scale(1.05);
     }
   }
   
-  // Header styles
-  &__header {
+  &__content {
+    padding: 1rem;
+    flex: 1 1 auto;
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    border-bottom: 1px solid rgba($dark-color, 0.05);
-  }
-  
-  &__header-content {
-    flex: 1;
+    flex-direction: column;
   }
   
   &__title {
     font-size: 1.25rem;
-    font-weight: $font-weight-bold;
-    margin: 0 0 $spacing-xs 0;
-    color: $dark-color;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    color: #333333;
   }
   
-  &__subtitle {
-    font-size: 0.875rem;
-    color: $text-light;
-    margin: 0;
-  }
-  
-  &__header-actions {
-    margin-left: $spacing-sm;
-    display: flex;
-    align-items: center;
-  }
-  
-  // Body styles
   &__body {
-    flex: 1;
+    color: #666666;
+    font-size: 1rem;
+    line-height: 1.5;
+    flex: 1 1 auto;
   }
   
-  // Footer styles
   &__footer {
-    border-top: 1px solid rgba($dark-color, 0.05);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-
-// Accessibility adjustments
-.high-contrast {
-  .card {
-    border: 1px solid var(--dark-color);
-    
-    &--elevated {
-      box-shadow: none;
-    }
-    
-    &__header,
-    &__footer {
-      border-color: var(--dark-color);
-    }
-  }
-}
-
-// Dark mode adjustments (if implemented later)
-.dark-mode {
-  .card {
-    background-color: color.scale($dark-color, $lightness: -5%);
-    
-    &--bordered {
-      border-color: rgba($light-color, 0.2);
-    }
-    
-    &__title {
-      color: $light-color;
-    }
-    
-    &__subtitle {
-      color: color.scale($light-color, $lightness: -20%);
-    }
-    
-    &__header,
-    &__footer {
-      border-color: rgba($light-color, 0.1);
-    }
-  }
-}
-
-// Responsive adjustments
-@include responsive(xs) {
-  .card {
-    &__title {
-      font-size: 1.125rem;
-    }
+    padding: 0.75rem 1rem;
+    background-color: rgba(#f8f9fa, 0.5);
+    border-top: 1px solid #dee2e6;
   }
 }

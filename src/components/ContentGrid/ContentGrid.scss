@@ -1,0 +1,119 @@
+// src/components/ContentGrid/ContentGrid.scss
+@use '../../styles/variables';
+@use '../../styles/mixins';@use '../../styles/accessibility';
+.content-grid {
+  margin-bottom: 2rem;
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  
+  &__more-link {
+    color: $primary-color;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: color.adjust($primary-color, $lightness: -10%);
+      text-decoration: underline;
+    }
+    
+    &:focus {
+      @include focus-outline;
+    }
+  }
+  
+  &__items {
+    display: grid;
+    gap: 1.5rem;
+    
+    &--2-col {
+      grid-template-columns: repeat(2, 1fr);
+      
+      @media (max-width: $breakpoint-md) {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    &--3-col {
+      grid-template-columns: repeat(3, 1fr);
+      
+      @media (max-width: $breakpoint-lg) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      @media (max-width: $breakpoint-sm) {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    &--4-col {
+      grid-template-columns: repeat(4, 1fr);
+      
+      @media (max-width: $breakpoint-xl) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      @media (max-width: $breakpoint-lg) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      @media (max-width: $breakpoint-sm) {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+  
+  &__item {
+    height: 100%;
+    transition: transform 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-4px);
+    }
+  }
+  
+  &__item-meta {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.85rem;
+  }
+  
+  &__item-author {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  
+  &__item-reading-time {
+    color: $text-secondary;
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  &__item-genre,
+  &__item-mood {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    margin-top: 0.25rem;
+    border-radius: $border-radius-sm;
+    background-color: rgba($primary-color, 0.1);
+    color: $primary-color;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+  
+  &__item-mood {
+    background-color: rgba($secondary-color, 0.1);
+    color: $secondary-color;
+  }
+}

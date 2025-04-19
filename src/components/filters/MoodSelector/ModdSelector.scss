@@ -1,0 +1,77 @@
+// src/components/filters/MoodSelector/MoodSelector.scss
+@use '../../../styles/variables';@use '../../../styles/mixins';@use '../../../styles/accessibility';
+// src/components/filters/MoodSelector/MoodSelector.scss
+
+// src/components/filters/MoodSelector/MoodSelector.scss
+
+.mood-selector {
+  margin-bottom: 1.5rem;
+  
+  &__scroll-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 0.5rem;
+    
+    // Hide scrollbar
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  &__mood {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0.75rem;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: rgba(74, 108, 247, 0.05);
+      transform: translateY(-2px);
+    }
+    
+    &:focus {
+      outline: 2px solid #4a6cf7;
+      outline-offset: 2px;
+    }
+    
+    &--selected {
+      .mood-selector__emoji {
+        border: 2px solid #4a6cf7;
+        box-shadow: 0 2px 8px rgba(74, 108, 247, 0.3);
+      }
+      
+      .mood-selector__label {
+        color: #4a6cf7;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  &__emoji {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+  }
+  
+  &__label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #666666;
+    transition: color 0.2s ease;
+  }
+}

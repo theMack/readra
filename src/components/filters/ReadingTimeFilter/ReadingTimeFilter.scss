@@ -1,0 +1,109 @@
+// src/components/filters/ReadingTimeFilter/ReadingTimeFilter.scss
+@use '../../../styles/variables';@use '../../../styles/mixins';@use '../../../styles/accessibility';
+.reading-time-filter {
+  position: relative;
+  margin-bottom: 1.5rem;
+  
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: white;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-md;
+    font-size: 1rem;
+    font-weight: 500;
+    color: $text-primary;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      border-color: color.adjust($border-color, $lightness: -10%);
+    }
+    
+    &:focus {
+      @include focus-outline;
+      outline-offset: 1px;
+    }
+  }
+  
+  &__label {
+    flex: 1;
+    text-align: left;
+  }
+  
+  &__arrow {
+    margin-left: 0.75rem;
+    font-size: 0.75rem;
+    color: $text-secondary;
+    transition: transform 0.2s ease;
+  }
+  
+  &__options {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    margin-top: 0.5rem;
+    background-color: white;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-md;
+    z-index: 10;
+    overflow: hidden;
+  }
+  
+  &__option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: none;
+    border: none;
+    border-bottom: 1px solid $border-color;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+    }
+    
+    &:focus {
+      @include focus-outline;
+      outline-offset: -2px;
+    }
+    
+    &--selected {
+      background-color: rgba($primary-color, 0.1);
+      font-weight: 500;
+      color: $primary-color;
+    }
+  }
+  
+  &__option-icon {
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+  }
+  
+  &__option-label {
+    flex: 1;
+  }
+  
+  &__option-minutes {
+    font-size: 0.875rem;
+    color: $text-secondary;
+    margin-left: 0.75rem;
+  }
+  
+  // Accessibility improvements
+  &:focus-within {
+    outline: none;
+  }
+}

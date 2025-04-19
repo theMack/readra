@@ -1,19 +1,27 @@
-
 import { defineConfig } from 'vitest/config';
-// @ts-ignore
-import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
 
 export default defineConfig({
-  plugins: [react()],
   test: {
-    globals: true,
     environment: 'jsdom',
-    setupFiles: './vitest.setup.ts',
-    css: true,
+    globals: true,
+    setupFiles: ['./setupTests.js'],
+    deps: {
+      inline: [/\.scss$/, /\.css$/],
+    },
+    css: false,
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
+    // Add Jest compatibility
+    mockReset: true,
+    restoreMocks: true,
+    clearMocks: true,
   },
   resolve: {
     alias: {
-      '@': '/src',
+      // Mock style imports
+      '.+\\.(css|scss|sass)$': resolve(__dirname, './__mocks__/styleMock.js'),
     },
-  }
+  },
 });
