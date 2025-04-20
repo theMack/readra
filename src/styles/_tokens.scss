@@ -1,83 +1,77 @@
-@forward 'colors';
-@forward 'typography';
+// src/styles/_tokens.scss
 
-// ========== COLOR UTILITIES ==========
+// -----------------------------------------------------
+// COLOR PALETTE
+// -----------------------------------------------------
 
-// Brand colors
-$primary-color: #4a6cf7;
-$secondary-color: #ff6b6b;
-$tertiary-color: #6c5ce7;
+$primary-color:    #4a6cf7;
+$secondary-color:  #ff6b6b;
+$tertiary-color:   #6c5ce7;
 
-// Text Colors
-@mixin text-primary { color: vars.$text-primary; }
-@mixin text-secondary { color: vars.$text-secondary; }
-@mixin text-light { color: vars.$text-light; }
-@mixin text-on-dark { color: vars.$light-color; }
+$success-color:    #28a745;
+$warning-color:    #ffc107;
+$error-color:      #dc3545;
+$info-color:       #17a2b8;
 
-// Background Colors
-@mixin bg-light { background-color: vars.$background-light; }
-@mixin bg-medium { background-color: vars.$background-medium; }
-@mixin bg-dark { background-color: vars.$background-dark; }
-@mixin bg-brand { background-color: vars.$primary-color; }
-@mixin bg-secondary { background-color: vars.$secondary-color; }
-@mixin bg-tertiary { background-color: vars.$tertiary-color; }
+$light-color:      #fff;
+$dark-color:       #000;
 
-// Border Colors
-@mixin border-default { border: 1px solid vars.$border-color; }
-@mixin border-light { border: 1px solid lighten(vars.$border-color, 10%); }
-@mixin border-dark { border: 1px solid darken(vars.$border-color, 10%); }
+$text-primary:     #222;
+$text-secondary:   #555;
+$text-light:       #eee;
 
-// Status Backgrounds
-@mixin bg-success { background-color: vars.$success-color; }
-@mixin bg-warning { background-color: vars.$warning-color; }
-@mixin bg-error { background-color: vars.$error-color; }
-@mixin bg-info { background-color: vars.$info-color; }
+$background-light: #f9f9f9;
+$background-dark:  #343a40;
+$background-alt:   #f1f1f1;
 
-// Text on status backgrounds
-@mixin text-on-success { color: vars.$light-color; }
-@mixin text-on-warning { color: vars.$dark-color; }
-@mixin text-on-error { color: vars.$light-color; }
-@mixin text-on-info { color: vars.$light-color; }
+$border-color:     #ddd;
 
-// ========== THEME MODES ==========
+// -----------------------------------------------------
+// TYPOGRAPHY
+// -----------------------------------------------------
 
-@mixin theme-light {
-  background-color: vars.$background-light;
-  color: vars.$text-primary;
-}
+$font-family-base: 'Nunito', sans-serif;
 
-@mixin theme-dark {
-  background-color: vars.$dark-color;
-  color: vars.$text-light;
-}
+// -----------------------------------------------------
+// SPACING SCALE
+// -----------------------------------------------------
 
-// ========== BUTTON STATUS STYLES ==========
+$spacing-sm: 0.5rem;
+$spacing-xs: 0.25rem;
+$spacing-xxs: 0.125rem;
+$spacing-md: 1rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+$spacing-xxl: 4rem;
+$spacing-xxxl: 5rem;
+$spacing-xxxxl: 6rem;
 
-@mixin button-status($color) {
-  @include button-base;
-  background-color: $color;
-  color: vars.$light-color;
+// -----------------------------------------------------
+// BORDER RADIUS
+// -----------------------------------------------------
 
-  &:hover {
-    background-color: color.adjust($color, $lightness: -10%);
-  }
+$border-radius-sm: 0.125rem;
+$border-radius-sm: 0.25rem;
+$border-radius-pill: 50rem;
+$border-radius-circle: 50%;
+$border-radius-xs: 0.0625rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 1.5rem;  
 
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba($color, 0.4);
-  }
+// -----------------------------------------------------
+// SHADOWS & TRANSITIONS
+// -----------------------------------------------------
 
-  &:active {
-    background-color: color.adjust($color, $lightness: -15%);
-  }
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$transition-base: all 0.2s ease-in-out;
 
-  &:disabled {
-    background-color: color.adjust($color, $lightness: 20%);
-    cursor: not-allowed;
-  }
-}
+// -----------------------------------------------------
+// BREAKPOINTS
+// -----------------------------------------------------
 
-@mixin button-success { @include button-status(vars.$success-color); }
-@mixin button-warning { @include button-status(vars.$warning-color); }
-@mixin button-error   { @include button-status(vars.$error-color); }
-@mixin button-info    { @include button-status(vars.$info-color); }
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;

@@ -1,6 +1,6 @@
 // src/index.scss
-@use './styles/tokens.scss';
-@use './styles/mixins.scss';
+@use './styles/tokens' as tokens;
+ @use './styles/utilities' as utils;
 
 * {
     margin: 0;

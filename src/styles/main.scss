@@ -1,6 +1,13 @@
-// src/styles/main.scss
+@use './tokens' as tokens;
+@use './utilities' as utils;
 
 // Import variables, mixins, and other base styles@use './tokens';@use './mixins';@use './typography';@use './animations';@use './accessibility';
+.sr-only {
+  @include utils.visually-hidden;
+}
+.page-wrapper {
+  @include utils.container;
+}
 // Base styles
 * {
   box-sizing: border-box;
@@ -14,7 +21,7 @@ html, body {
 }
 
 body {
-  background-color: v.$background-light;
+  background-color: tokens.$background-light;
   overflow-x: hidden; // Prevent horizontal scrolling
 }
 
@@ -26,27 +33,27 @@ select,
 textarea,
 [tabindex]:not([tabindex="-1"]) {
   &:focus {
-    @include focus-outline;
+    @include utils.focus-outline;
   }
 }
 
 // Container classes
 .container {
-  @include container;
+  @include utils.container;
 }
 
 .container-sm {
-  @include container;
+  @include utils.container;
   max-width: 768px;
 }
 
 .container-md {
-  @include container;
+  @include utils.container;
   max-width: 992px;
 }
 
 .container-lg {
-  @include container;
+  @include utils.container;
   max-width: 1200px;
 }
 
@@ -129,12 +136,12 @@ textarea,
 // Spacing utilities
 @each $size, $value in (
   0: 0,
-  1: $spacing-xs,
-  2: $spacing-sm,
-  3: $spacing-md,
-  4: $spacing-lg,
-  5: $spacing-xl,
-  6: $spacing-xxl
+  1: tokens.$spacing-xs,
+  2: tokens.$spacing-sm,
+  3: tokens.$spacing-md,
+  4: tokens.$spacing-lg,
+  5: tokens.$spacing-xl,
+  6: tokens.$spacing-xxl
 ) {
   .m-#{$size} {
     margin: $value !important;
@@ -209,23 +216,23 @@ textarea,
 
 // Border utilities
 .border {
-  border: 1px solid $border-color !important;
+  border: 1px solid tokens.$border-color !important;
 }
 
 .border-top {
-  border-top: 1px solid $border-color !important;
+  border-top: 1px solid tokens.$border-color !important;
 }
 
 .border-right {
-  border-right: 1px solid $border-color !important;
+  border-right: 1px solid tokens.$border-color !important;
 }
 
 .border-bottom {
-  border-bottom: 1px solid $border-color !important;
+  border-bottom: 1px solid tokens.$border-color !important;
 }
 
 .border-left {
-  border-left: 1px solid $border-color !important;
+  border-left: 1px solid tokens.$border-color !important;
 }
 
 .border-0 {
@@ -234,23 +241,23 @@ textarea,
 
 // Border radius
 .rounded {
-  border-radius: $border-radius-md !important;
+  border-radius: tokens.$border-radius-md !important;
 }
 
 .rounded-sm {
-  border-radius: $border-radius-sm !important;
+  border-radius: tokens.$border-radius-sm !important;
 }
 
 .rounded-lg {
-  border-radius: $border-radius-lg !important;
+  border-radius: tokens.$border-radius-lg !important;
 }
 
 .rounded-xl {
-  border-radius: $border-radius-xl !important;
+  border-radius: tokens.$border-radius-xl !important;
 }
 
 .rounded-pill {
-  border-radius: $border-radius-pill !important;
+  border-radius: tokens.$border-radius-pill !important;
 }
 
 .rounded-circle {
@@ -259,19 +266,19 @@ textarea,
 
 // Background colors
 .bg-primary {
-  background-color: $primary-color !important;
+  background-color: tokens.$primary-color !important;
 }
 
 .bg-secondary {
-  background-color: $secondary-color !important;
+  background-color: tokens.$secondary-color !important;
 }
 
 .bg-light {
-  background-color: $background-light !important;
+  background-color: tokens.$background-light !important;
 }
 
 .bg-dark {
-  background-color: $background-dark !important;
+  background-color: tokens.$background-dark !important;
 }
 
 .bg-white {
@@ -335,7 +342,7 @@ textarea,
 
 // Screen reader only content
 .sr-only {
-  @include visually-hidden;
+  @include utils.visually-hidden;
 }
 
 // Print styling

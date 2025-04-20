@@ -1,2 +1,2 @@
-// src/components/common/HeroSection/index.ts
-export { default } from './HeroSection';
+import HeroSection from './HeroSection';
+export default HeroSection;
