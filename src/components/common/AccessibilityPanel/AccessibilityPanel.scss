@@ -1,0 +1,255 @@
+@use '../../styles/tokens';
+@use 'sass:color';
+
+.accessibility-panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fade-in 0.2s ease-out;
+}
+
+.accessibility-panel {
+  background-color: tokens.$background-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 450px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slide-up 0.3s ease-out;
+  color: tokens.$text-color;
+
+  &__header {
+    padding: 16px 20px;
+    border-bottom: 1px solid tokens.$border-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      font-weight: tokens.$font-weight-semibold;
+    }
+  }
+
+  &__close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: tokens.$text-color;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 32px;
+    margin: -4px;
+    transition: background-color 0.2s;
+
+    &:hover, &:focus {
+      background-color: tokens.$hover-color;
+      color: tokens.$text-color-dark;
+    }
+
+    &:focus {
+      outline: 2px solid tokens.$focus-color;
+      outline-offset: 2px;
+    }
+  }
+
+  &__content {
+    padding: 20px;
+  }
+
+  &__section {
+    margin-bottom: 24px;
+
+    h3 {
+      font-size: 1rem;
+      margin: 0 0 12px 0;
+      font-weight: tokens.$font-weight-medium;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__button {
+    background-color: tokens.$button-bg-color;
+    border: 1px solid tokens.$border-color;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: tokens.$font-weight-medium;
+    color: tokens.$text-color;
+
+    &:hover:not(:disabled) {
+      background-color: tokens.$button-hover-bg-color;
+    }
+
+    &:focus {
+      outline: 2px solid tokens.$focus-color;
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &--primary {
+      background-color: tokens.$primary-color;
+      border-color: tokens.$primary-color;
+      color: white;
+
+      &:hover:not(:disabled) {
+        background-color: color.scale(tokens.$primary-color, $lightness: -10%);
+      }
+    }
+  }
+
+  &__toggle-options {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__toggle-option {
+    display: flex;
+    align-items: center;
+  }
+
+  &__footer {
+    padding: 16px 20px;
+    border-top: 1px solid tokens.$border-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: tokens.$text-color-muted;
+    }
+  }
+}
+
+// Toggle switch styles
+.toggle-switch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+
+    &:checked + .toggle-slider {
+      background-color: tokens.$primary-color;
+
+      &:before {
+        transform: translateX(18px);
+      }
+    }
+
+    &:focus + .toggle-slider {
+      box-shadow: 0 0 0 2px tokens.$focus-color;
+    }
+  }
+
+  .toggle-slider {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    background-color: tokens.$toggle-bg-color;
+    border-radius: 22px;
+    transition: 0.2s;
+    margin-right: 12px;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 2px;
+      bottom: 2px;
+      background-color: white;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+  }
+
+  .toggle-label {
+    font-size: 0.875rem;
+  }
+}
+
+// Line spacing icons
+.line-spacing-icon {
+  display: inline-block;
+  font-weight: bold;
+  letter-spacing: -2px;
+
+  &.line-spacing-decrease {
+    letter-spacing: -4px;
+  }
+
+  &.line-spacing-increase {
+    letter-spacing: 1px;
+  }
+}
+
+// Animations
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive styles
+@media (max-width: 480px) {
+  .accessibility-panel {
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  .accessibility-panel-overlay {
+    align-items: flex-end;
+  }
+}

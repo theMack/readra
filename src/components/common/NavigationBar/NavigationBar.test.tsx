@@ -1,87 +1,84 @@
-// src/components/common/NavigationBar/NavigationBar.test.tsx
-
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 import NavigationBar from './NavigationBar';
 
-// Helper function to render with Router
-const renderWithRouter = (ui: React.ReactElement) => {
-  return render(ui, { wrapper: BrowserRouter });
-};
-
-describe('NavigationBar Component', () => {
-  it('renders the logo and navigation links', () => {
-    renderWithRouter(<NavigationBar />);
+describe('NavigationBar', () => {
+  test('renders logo and navigation links', () => {
+    render(<NavigationBar />);
     
-    expect(screen.getByText('Readra')).toBeInTheDocument();
-    expect(screen.getByText('Discover')).toBeInTheDocument();
+    // Logo should be present
+    expect(screen.getByAltText('Readra')).toBeInTheDocument();
+    
+    // Navigation links
+    expect(screen.getByText('Explore')).toBeInTheDocument();
     expect(screen.getByText('Categories')).toBeInTheDocument();
-    expect(screen.getByText('Writers')).toBeInTheDocument();
-    expect(screen.getByText('Subscribe')).toBeInTheDocument();
+    expect(screen.getByText('My Library')).toBeInTheDocument();
+  });
+
+  test('toggles mobile menu when mobile toggle is clicked', () => {
+    render(<NavigationBar />);
+    
+    // Mobile menu should not be visible initially
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    
+    // Click to open menu
+    const mobileToggle = screen.getByLabelText('Open menu');
+    fireEvent.click(mobileToggle);
+    
+    // Mobile menu should now be visible
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+    
+    // Toggle label should now be "Close menu"
+    expect(screen.getByLabelText('Close menu')).toBeInTheDocument();
+    
+    // Click to close menu
+    fireEvent.click(screen.getByLabelText('Close menu'));
+    
+    // Mobile menu should be removed
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
   });
   
-  it('renders login and signup buttons when not logged in', () => {
-    renderWithRouter(<NavigationBar isLoggedIn={false} />);
+  test('calls accessibility toggle when accessibility button is clicked', () => {
+    const mockToggle = jest.fn();
+    render(<NavigationBar onAccessibilityToggle={mockToggle} />);
     
-    expect(screen.getByText('Log in')).toBeInTheDocument();
-    expect(screen.getByText('Sign up')).toBeInTheDocument();
-  });
-  
-  it('renders user avatar when logged in', () => {
-    renderWithRouter(
-      <NavigationBar 
-        isLoggedIn={true} 
-        userProfile={{ name: 'John Doe', avatar: 'avatar.jpg' }} 
-      />
-    );
-    
-    const avatar = screen.getByAltText('John Doe\'s profile');
-    expect(avatar).toBeInTheDocument();
-    expect(avatar).toHaveAttribute('src', 'avatar.jpg');
-  });
-  
-  it('renders avatar placeholder with first letter when no avatar is provided', () => {
-    renderWithRouter(
-      <NavigationBar 
-        isLoggedIn={true} 
-        userProfile={{ name: 'John Doe' }} 
-      />
-    );
-    
-    expect(screen.getByText('J')).toBeInTheDocument();
-  });
-  
-  it('calls onAccessibilityClick when accessibility button is clicked', () => {
-    const handleAccessibilityClick = vi.fn();
-    renderWithRouter(
-      <NavigationBar onAccessibilityClick={handleAccessibilityClick} />
-    );
-    
-    const accessibilityButton = screen.getByLabelText('Accessibility options');
+    const accessibilityButton = screen.getByLabelText('Accessibility settings');
     fireEvent.click(accessibilityButton);
     
-    expect(handleAccessibilityClick).toHaveBeenCalledTimes(1);
+    expect(mockToggle).toHaveBeenCalledTimes(1);
   });
   
-  it('toggles mobile menu when toggle button is clicked', () => {
-    renderWithRouter(<NavigationBar />);
+  test('closes mobile menu when clicking outside', () => {
+    const { container } = render(<NavigationBar />);
     
-    // Initially menu should be closed
-    const menu = document.querySelector('.navbar__menu');
-    expect(menu).not.toHaveClass('navbar__menu--open');
+    // Open mobile menu
+    const mobileToggle = screen.getByLabelText('Open menu');
+    fireEvent.click(mobileToggle);
     
-    // Click the toggle button
-    const toggleButton = screen.getByLabelText('Toggle navigation menu');
-    fireEvent.click(toggleButton);
+    // Verify menu is open
+    expect(screen.getByRole('menu')).toBeInTheDocument();
     
-    // Menu should be open
-    expect(menu).toHaveClass('navbar__menu--open');
+    // Click outside the menu (on the body)
+    fireEvent.mouseDown(document.body);
     
-    // Click toggle again
-    fireEvent.click(toggleButton);
+    // Menu should be closed
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+  });
+  
+  test('closes mobile menu when escape key is pressed', () => {
+    render(<NavigationBar />);
     
-    // Menu should be closed again
-    expect(menu).not.toHaveClass('navbar__menu--open');
+    // Open mobile menu
+    const mobileToggle = screen.getByLabelText('Open menu');
+    fireEvent.click(mobileToggle);
+    
+    // Verify menu is open
+    expect(screen.getByRole('menu')).toBeInTheDocument();
+    
+    // Press ESC key
+    fireEvent.keyDown(document, { key: 'Escape' });
+    
+    // Menu should be closed
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
   });
 });
