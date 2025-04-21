@@ -1,0 +1,209 @@
+// src/components/common/Footer/Footer.scss
+@use '../../../styles/_tokens.scss' as tokens;
+
+.readra-footer {
+  background-color: tokens.$color-background-dark;
+  color: tokens.$color-text-inverse;
+  padding: tokens.$spacing-8 0;
+  margin-top: tokens.$spacing-10;
+  
+  &__container {
+    max-width: tokens.$container-max-width;
+    margin: 0 auto;
+    padding: 0 tokens.$spacing-4;
+    
+    @media (min-width: tokens.$breakpoint-md) {
+      padding: 0 tokens.$spacing-6;
+    }
+  }
+  
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: tokens.$spacing-8;
+    margin-bottom: tokens.$spacing-8;
+    
+    @media (min-width: tokens.$breakpoint-sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (min-width: tokens.$breakpoint-lg) {
+      grid-template-columns: 2fr repeat(3, 1fr);
+    }
+  }
+  
+  &__brand {
+    margin-bottom: tokens.$spacing-4;
+    
+    @media (min-width: tokens.$breakpoint-sm) {
+      grid-column: span 2;
+    }
+    
+    @media (min-width: tokens.$breakpoint-lg) {
+      grid-column: span 1;
+    }
+  }
+  
+  &__logo-link {
+    display: inline-block;
+    margin-bottom: tokens.$spacing-4;
+  }
+  
+  &__logo {
+    height: 40px;
+    width: auto;
+  }
+  
+  &__social {
+    display: flex;
+    gap: tokens.$spacing-4;
+    margin-top: tokens.$spacing-4;
+  }
+  
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: tokens.$color-background-muted;
+    color: tokens.$color-text-inverse;
+    transition: background-color tokens.$transition-default;
+    
+    &:hover {
+      background-color: tokens.$color-primary;
+    }
+  }
+  
+  &__column {
+    h3 {
+      color: tokens.$color-text-inverse;
+      margin-bottom: tokens.$spacing-4;
+      font-size: tokens.$font-size-md;
+    }
+  }
+  
+  &__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: tokens.$spacing-2;
+    }
+  }
+  
+  &__link {
+    color: tokens.$color-text-inverse-muted;
+    text-decoration: none;
+    font-size: tokens.$font-size-sm;
+    transition: color tokens.$transition-default;
+    
+    &:hover {
+      color: tokens.$color-primary;
+    }
+  }
+  
+  &__newsletter {
+    @media (min-width: tokens.$breakpoint-sm) {
+      grid-column: span 2;
+    }
+    
+    @media (min-width: tokens.$breakpoint-lg) {
+      grid-column: span 1;
+    }
+    
+    h3 {
+      color: tokens.$color-text-inverse;
+      margin-bottom: tokens.$spacing-2;
+      font-size: tokens.$font-size-md;
+    }
+  }
+  
+  &__subscribe-form {
+    display: flex;
+    margin-top: tokens.$spacing-3;
+  }
+  
+  &__email-input {
+    flex: 1;
+    background-color: tokens.$color-background;
+    border: 1px solid tokens.$color-border;
+    border-radius: tokens.$border-radius-sm 0 0 tokens.$border-radius-sm;
+    padding: tokens.$spacing-2 tokens.$spacing-3;
+    font-size: tokens.$font-size-sm;
+    color: tokens.$color-text-primary;
+    
+    &:focus {
+      outline: none;
+      border-color: tokens.$color-primary;
+    }
+  }
+  
+  &__subscribe-button {
+    background-color: tokens.$color-primary;
+    color: tokens.$color-text-inverse;
+    border: none;
+    border-radius: 0 tokens.$border-radius-sm tokens.$border-radius-sm 0;
+    padding: tokens.$spacing-2 tokens.$spacing-4;
+    font-size: tokens.$font-size-sm;
+    font-weight: tokens.$font-weight-medium;
+    cursor: pointer;
+    transition: background-color tokens.$transition-default;
+    
+    &:hover {
+      background-color: tokens.$color-primary-dark;
+    }
+  }
+  
+  &__subscribe-success {
+    margin-top: tokens.$spacing-3;
+    padding: tokens.$spacing-3;
+    background-color: rgba(tokens.$color-success, 0.1);
+    border-radius: tokens.$border-radius-sm;
+    
+    p {
+      margin: 0;
+    }
+  }
+  
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid tokens.$color-border-muted;
+    padding-top: tokens.$spacing-6;
+    
+    @media (min-width: tokens.$breakpoint-md) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  
+  &__copyright {
+    color: tokens.$color-text-inverse-muted;
+    margin-bottom: tokens.$spacing-4;
+    
+    @media (min-width: tokens.$breakpoint-md) {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__legal-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    
+    li {
+      margin-right: tokens.$spacing-4;
+      margin-bottom: tokens.$spacing-2;
+      
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}

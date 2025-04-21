@@ -1,0 +1,48 @@
+@use '../../../styles/tokens' as tokens;
+
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  
+  // Centered container
+  &--centered {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  // Container with padding
+  &--padding {
+    padding-left: tokens.spacing('md');
+    padding-right: tokens.spacing('md');
+    
+    @include tokens.media-breakpoint-up('md') {
+      padding-left: tokens.spacing('lg');
+      padding-right: tokens.spacing('lg');
+    }
+  }
+  
+  // Max width variants
+  &--sm {
+    max-width: 540px;
+  }
+  
+  &--md {
+    max-width: 720px;
+  }
+  
+  &--lg {
+    max-width: 960px;
+  }
+  
+  &--xl {
+    max-width: 1140px;
+  }
+  
+  &--xxl {
+    max-width: 1320px;
+  }
+  
+  &--fluid {
+    max-width: 100%;
+  }
+}

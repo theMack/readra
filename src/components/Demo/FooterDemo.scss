@@ -1,0 +1,36 @@
+// src/components/Demo/FooterDemo.scss
+@use '../../styles/_tokens.scss' as tokens;
+
+.footer-demo-controls {
+  padding: 40px 0;
+}
+
+.demo-options {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: tokens.$color-background-light;
+  border-radius: 8px;
+}
+
+.option-row {
+  margin-bottom: 16px;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text-input {
+  margin-left: 8px;
+  padding: 8px 12px;
+  border: 1px solid tokens.$color-border;
+  border-radius: 4px;
+  min-width: 300px;
+}
+
+// Spacer for demo purposes
+.content-spacer {
+  height: 50vh;
+}

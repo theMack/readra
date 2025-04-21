@@ -1,0 +1,145 @@
+@use '../../styles/tokens' as tokens;
+
+.layout-demo {
+  padding-bottom: tokens.spacing('xxl');
+  
+  &__title {
+    font-size: tokens.typography('font-size', 'xxxl');
+    font-weight: tokens.typography('font-weight', 'bold');
+    margin-bottom: tokens.spacing('xl');
+    text-align: center;
+    color: var(--color-primary);
+  }
+  
+  &__section {
+    margin-bottom: tokens.spacing('xxl');
+  }
+  
+  &__section-title {
+    font-size: tokens.typography('font-size', 'xxl');
+    font-weight: tokens.typography('font-weight', 'bold');
+    margin-bottom: tokens.spacing('md');
+    color: var(--color-text-primary);
+    border-bottom: 1px solid var(--color-neutral-300);
+    padding-bottom: tokens.spacing('sm');
+  }
+  
+  &__description {
+    font-size: tokens.typography('font-size', 'md');
+    margin-bottom: tokens.spacing('lg');
+    color: var(--color-text-secondary);
+    max-width: 800px;
+  }
+  
+  &__example {
+    margin-bottom: tokens.spacing('xl');
+    padding: tokens.spacing('lg');
+    background-color: var(--color-neutral-100);
+    border-radius: var(--border-radius-lg);
+  }
+  
+  &__example-title {
+    font-size: tokens.typography('font-size', 'lg');
+    font-weight: tokens.typography('font-weight', 'medium');
+    margin-bottom: tokens.spacing('md');
+    color: var(--color-text-primary);
+  }
+}
+
+.color-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: tokens.typography('font-weight', 'medium');
+  border-radius: var(--border-radius-md);
+  padding: tokens.spacing('md');
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  // Width variants
+  &--w-30 {
+    width: 30%;
+  }
+  
+  &--w-45 {
+    width: 45%;
+  }
+  
+  &--w-50 {
+    width: 50%;
+  }
+  
+  &--w-100 {
+    width: 100%;
+  }
+  
+  // Height variants
+  &--height-xs {
+    height: 50px;
+  }
+  
+  &--height-sm {
+    height: 75px;
+  }
+  
+  &--height-md {
+    height: 100px;
+  }
+  
+  &--height-lg {
+    height: 200px;
+  }
+  
+  &--height-xl {
+    height: 300px;
+  }
+  
+  // Color variants - Primary palette
+  &--4961E7 {
+    background-color: #4961E7;
+  }
+  
+  &--6B4DE7 {
+    background-color: #6B4DE7;
+  }
+  
+  &--8C39E7 {
+    background-color: #8C39E7;
+  }
+  
+  // Color variants - Neutrals
+  &--343a40 {
+    background-color: #343a40;
+  }
+  
+  &--495057 {
+    background-color: #495057;
+  }
+  
+  &--6c757d {
+    background-color: #6c757d;
+  }
+  
+  &--adb5bd {
+    background-color: #adb5bd;
+  }
+  
+  &--ced4da {
+    background-color: #ced4da;
+  }
+  
+  &--e9ecef {
+    background-color: #e9ecef;
+  }
+}
+
+// Helper utility classes
+.mt-3 {
+  margin-top: tokens.spacing('md');
+}

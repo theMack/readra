@@ -1,0 +1,94 @@
+@use '../styles/tokens' as tokens;
+
+.home {
+  padding: tokens.spacing('xl') 0;
+  
+  &__header {
+    text-align: center;
+    margin-bottom: tokens.spacing('xxl');
+  }
+  
+  &__title {
+    font-size: tokens.typography('font-size', 'xxxl');
+    font-weight: tokens.typography('font-weight', 'bold');
+    color: var(--color-primary);
+    margin-bottom: tokens.spacing('sm');
+  }
+  
+  &__subtitle {
+    font-size: tokens.typography('font-size', 'xl');
+    color: var(--color-text-secondary);
+  }
+  
+  &__main {
+    margin-bottom: tokens.spacing('xxl');
+  }
+  
+  &__section {
+    background-color: var(--color-background-secondary);
+    border-radius: var(--border-radius-lg);
+    padding: tokens.spacing('xl');
+    margin-bottom: tokens.spacing('xl');
+  }
+  
+  &__section-title {
+    font-size: tokens.typography('font-size', 'xxl');
+    font-weight: tokens.typography('font-weight', 'bold');
+    color: var(--color-text-primary);
+    margin-bottom: tokens.spacing('md');
+    border-bottom: 1px solid var(--color-neutral-300);
+    padding-bottom: tokens.spacing('sm');
+  }
+  
+  &__nav {
+    margin-top: tokens.spacing('lg');
+  }
+  
+  &__nav-link {
+    display: inline-block;
+    padding: tokens.spacing('md') tokens.spacing('lg');
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius-md);
+    font-weight: tokens.typography('font-weight', 'medium');
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    
+    &:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+    }
+  }
+  
+  &__pillars {
+    margin-top: tokens.spacing('lg');
+  }
+  
+  &__pillar {
+    background-color: white;
+    border-radius: var(--border-radius-md);
+    padding: tokens.spacing('lg');
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+  }
+  
+  &__pillar-title {
+    font-size: tokens.typography('font-size', 'lg');
+    font-weight: tokens.typography('font-weight', 'semibold');
+    color: var(--color-primary);
+    margin-bottom: tokens.spacing('sm');
+  }
+  
+  &__footer {
+    text-align: center;
+    color: var(--color-text-secondary);
+    margin-top: tokens.spacing('xxl');
+    padding-top: tokens.spacing('lg');
+    border-top: 1px solid var(--color-neutral-300);
+  }
+}

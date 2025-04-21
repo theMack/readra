@@ -1,0 +1,360 @@
+// src/components/common/Typography/Typography.scss
+@use '../../../styles/_tokens.scss' as tokens;
+
+/* ===== Heading Component ===== */
+.readra-heading {
+  margin: 0;
+  font-family: tokens.$font-family-heading;
+  
+  &--left {
+    text-align: left;
+  }
+  
+  &--center {
+    text-align: center;
+  }
+  
+  &--right {
+    text-align: right;
+  }
+  
+  &--with-margin {
+    margin-bottom: tokens.$spacing-6;
+  }
+  
+  // Font weights
+  &--light {
+    font-weight: tokens.$font-weight-light;
+  }
+  
+  &--regular {
+    font-weight: tokens.$font-weight-regular;
+  }
+  
+  &--medium {
+    font-weight: tokens.$font-weight-medium;
+  }
+  
+  &--semibold {
+    font-weight: tokens.$font-weight-semibold;
+  }
+  
+  &--bold {
+    font-weight: tokens.$font-weight-bold;
+  }
+  
+  // Heading variants
+  &--display {
+    font-size: tokens.$font-size-4xl;
+    line-height: tokens.$line-height-tight;
+    letter-spacing: tokens.$letter-spacing-tight;
+    
+    @media (min-width: tokens.$breakpoint-md) {
+      font-size: tokens.$font-size-5xl;
+    }
+  }
+  
+  &--title {
+    font-size: tokens.$font-size-3xl;
+    line-height: tokens.$line-height-tight;
+    letter-spacing: tokens.$letter-spacing-tight;
+    
+    @media (min-width: tokens.$breakpoint-md) {
+      font-size: tokens.$font-size-4xl;
+    }
+  }
+  
+  &--subtitle {
+    font-size: tokens.$font-size-2xl;
+    line-height: tokens.$line-height-normal;
+    letter-spacing: tokens.$letter-spacing-normal;
+    
+    @media (min-width: tokens.$breakpoint-md) {
+      font-size: tokens.$font-size-3xl;
+    }
+  }
+  
+  &--section {
+    font-size: tokens.$font-size-xl;
+    line-height: tokens.$line-height-normal;
+    letter-spacing: tokens.$letter-spacing-normal;
+    
+    @media (min-width: tokens.$breakpoint-md) {
+      font-size: tokens.$font-size-2xl;
+    }
+  }
+  
+  &--regular {
+    font-size: tokens.$font-size-lg;
+    line-height: tokens.$line-height-normal;
+    letter-spacing: tokens.$letter-spacing-normal;
+    
+    @media (min-width: tokens.$breakpoint-md) {
+      font-size: tokens.$font-size-xl;
+    }
+  }
+  
+  // Semantic levels may override some properties for accessibility
+  &--h1 {
+    color: tokens.$color-text-primary;
+  }
+  
+  &--h2 {
+    color: tokens.$color-text-primary;
+  }
+  
+  &--h3 {
+    color: tokens.$color-text-primary;
+  }
+  
+  &--h4 {
+    color: tokens.$color-text-secondary;
+  }
+  
+  &--h5 {
+    color: tokens.$color-text-secondary;
+  }
+  
+  &--h6 {
+    color: tokens.$color-text-tertiary;
+  }
+}
+
+/* ===== Paragraph Component ===== */
+.readra-paragraph {
+  margin: 0;
+  font-family: tokens.$font-family-base;
+  color: tokens.$color-text-primary;
+  
+  &--left {
+    text-align: left;
+  }
+  
+  &--center {
+    text-align: center;
+  }
+  
+  &--right {
+    text-align: right;
+  }
+  
+  &--justify {
+    text-align: justify;
+  }
+  
+  &--with-margin {
+    margin-bottom: tokens.$spacing-4;
+  }
+  
+  // Font sizes
+  &--xs {
+    font-size: tokens.$font-size-xs;
+  }
+  
+  &--sm {
+    font-size: tokens.$font-size-sm;
+  }
+  
+  &--md {
+    font-size: tokens.$font-size-base;
+  }
+  
+  &--lg {
+    font-size: tokens.$font-size-lg;
+  }
+  
+  &--xl {
+    font-size: tokens.$font-size-xl;
+  }
+  
+  // Font weights
+  &--light {
+    font-weight: tokens.$font-weight-light;
+  }
+  
+  &--regular {
+    font-weight: tokens.$font-weight-regular;
+  }
+  
+  &--medium {
+    font-weight: tokens.$font-weight-medium;
+  }
+  
+  &--semibold {
+    font-weight: tokens.$font-weight-semibold;
+  }
+  
+  &--bold {
+    font-weight: tokens.$font-weight-bold;
+  }
+  
+  // Line heights
+  &--tight {
+    line-height: tokens.$line-height-tight;
+  }
+  
+  &--normal {
+    line-height: tokens.$line-height-normal;
+  }
+  
+  &--relaxed {
+    line-height: tokens.$line-height-relaxed;
+  }
+  
+  &--loose {
+    line-height: tokens.$line-height-loose;
+  }
+  
+  // Special styles
+  &--emphasized {
+    background-color: tokens.$color-background-highlight;
+    padding: tokens.$spacing-1 tokens.$spacing-2;
+    border-radius: tokens.$border-radius-sm;
+  }
+}
+
+/* ===== Text Component ===== */
+.readra-text {
+  margin: 0;
+  font-family: tokens.$font-family-base;
+
+  // Font sizes
+  &--xs {
+    font-size: tokens.$font-size-xs;
+  }
+  
+  &--sm {
+    font-size: tokens.$font-size-sm;
+  }
+  
+  &--md {
+    font-size: tokens.$font-size-base;
+  }
+  
+  &--lg {
+    font-size: tokens.$font-size-lg;
+  }
+  
+  &--xl {
+    font-size: tokens.$font-size-xl;
+  }
+  
+  // Font weights
+  &--light {
+    font-weight: tokens.$font-weight-light;
+  }
+  
+  &--regular {
+    font-weight: tokens.$font-weight-regular;
+  }
+  
+  &--medium {
+    font-weight: tokens.$font-weight-medium;
+  }
+  
+  &--semibold {
+    font-weight: tokens.$font-weight-semibold;
+  }
+  
+  &--bold {
+    font-weight: tokens.$font-weight-bold;
+  }
+  
+  // Variants
+  &--default {
+    color: tokens.$color-text-primary;
+  }
+  
+  &--code {
+    font-family: tokens.$font-family-mono;
+    background-color: tokens.$color-background-muted;
+    padding: tokens.$spacing-1 tokens.$spacing-2;
+    border-radius: tokens.$border-radius-sm;
+    font-size: 0.9em;
+  }
+  
+  &--caption {
+    color: tokens.$color-text-tertiary;
+    font-size: 0.875em;
+  }
+  
+  &--quote {
+    font-style: italic;
+    color: tokens.$color-text-secondary;
+    border-left: 2px solid tokens.$color-border;
+    padding-left: tokens.$spacing-2;
+  }
+  
+  &--label {
+    font-weight: tokens.$font-weight-medium;
+    color: tokens.$color-text-secondary;
+  }
+  
+  // Text decorations
+  &--decoration-none {
+    text-decoration: none;
+  }
+  
+  &--decoration-underline {
+    text-decoration: underline;
+  }
+  
+  &--decoration-line-through {
+    text-decoration: line-through;
+  }
+  
+  // Text transformations
+  &--transform-none {
+    text-transform: none;
+  }
+  
+  &--transform-uppercase {
+    text-transform: uppercase;
+  }
+  
+  &--transform-lowercase {
+    text-transform: lowercase;
+  }
+  
+  &--transform-capitalize {
+    text-transform: capitalize;
+  }
+  
+  // Utils
+  &--truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    display: inline-block;
+  }
+  
+  // Colors
+  &--color-primary {
+    color: tokens.$color-primary;
+  }
+  
+  &--color-secondary {
+    color: tokens.$color-secondary;
+  }
+  
+  &--color-tertiary {
+    color: tokens.$color-text-tertiary;
+  }
+  
+  &--color-error {
+    color: tokens.$color-error;
+  }
+  
+  &--color-success {
+    color: tokens.$color-success;
+  }
+  
+  &--color-warning {
+    color: tokens.$color-warning;
+  }
+  
+  &--color-info {
+    color: tokens.$color-info;
+  }
+}

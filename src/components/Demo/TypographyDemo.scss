@@ -1,0 +1,29 @@
+// src/components/Demo/TypographyDemo.scss
+@use '../../styles/_tokens.scss' as tokens;
+
+.typography-demo {
+  padding: 20px 0;
+}
+
+.typography-section {
+  margin-bottom: 40px;
+}
+
+.demo-box {
+  background-color: tokens.$color-background-light;
+  border-radius: tokens.$border-radius-md;
+  padding: tokens.$spacing-5;
+  margin: tokens.$spacing-4 0 tokens.$spacing-6;
+}
+
+.content-example {
+  background-color: tokens.$color-background-white;
+  border: 1px solid tokens.$color-border;
+  padding: tokens.$spacing-6;
+}
+
+.truncation-container {
+  width: 300px;
+  border: 1px solid tokens.$color-border;
+  padding: tokens.$spacing-3;
+}

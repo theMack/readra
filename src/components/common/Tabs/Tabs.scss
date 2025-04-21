@@ -1,0 +1,160 @@
+// src/components/common/Tabs/Tabs.scss
+@use '../../../styles/_tokens.scss' as tokens;
+
+.readra-tabs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  &__list {
+    display: flex;
+    position: relative;
+    gap: tokens.$spacing-2;
+    
+    // Variant: vertical orientation
+    .readra-tabs--vertical & {
+      flex-direction: column;
+    }
+  }
+  
+  &__tab {
+    padding: tokens.$spacing-2 tokens.$spacing-4;
+    font-family: tokens.$font-family-base;
+    font-size: tokens.$font-size-base;
+    font-weight: tokens.$font-weight-medium;
+    color: tokens.$color-text-secondary;
+    background-color: transparent;
+    border: none;
+    border-radius: tokens.$border-radius-sm;
+    cursor: pointer;
+    transition: all tokens.$transition-default;
+    position: relative;
+    
+    &:hover:not(:disabled) {
+      color: tokens.$color-text-primary;
+      background-color: tokens.$color-background-hover;
+    }
+    
+    &:focus-visible {
+      outline: 2px solid tokens.$color-focus;
+      outline-offset: 2px;
+    }
+    
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    
+    &--active {
+      color: tokens.$color-text-primary;
+      font-weight: tokens.$font-weight-bold;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: tokens.$color-primary;
+        display: none;
+      }
+    }
+  }
+  
+  &__content {
+    margin-top: tokens.$spacing-4;
+  }
+  
+  &__panel {
+    &:not(&--active) {
+      display: none;
+    }
+    
+    &:focus-visible {
+      outline: none;
+    }
+  }
+  
+  // Variant: default
+  &--default {
+    .readra-tabs__tab--active {
+      background-color: tokens.$color-background-active;
+    }
+  }
+  
+  // Variant: pill
+  &--pill {
+    .readra-tabs__tab {
+      border-radius: tokens.$border-radius-full;
+      
+      &--active {
+        color: tokens.$color-text-inverse;
+        background-color: tokens.$color-primary;
+      }
+    }
+  }
+  
+  // Variant: underline
+  &--underline {
+    .readra-tabs__list {
+      border-bottom: 1px solid tokens.$color-border;
+    }
+    
+    .readra-tabs__tab {
+      border-radius: tokens.$border-radius-sm tokens.$border-radius-sm 0 0;
+      margin-bottom: -1px;
+      
+      &--active {
+        border-bottom: 2px solid tokens.$color-primary;
+        
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+  
+  // Variant: full width
+  &--full-width {
+    .readra-tabs__list {
+      width: 100%;
+    }
+    
+    .readra-tabs__tab {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  
+  // Variant: vertical orientation
+  &--vertical {
+    flex-direction: row;
+    
+    .readra-tabs__list {
+      flex-direction: column;
+      border-bottom: none;
+      border-right: 1px solid tokens.$color-border;
+      padding-right: tokens.$spacing-4;
+      margin-right: tokens.$spacing-4;
+    }
+    
+    .readra-tabs__content {
+      margin-top: 0;
+      flex: 1;
+    }
+    
+    &.readra-tabs--underline {
+      .readra-tabs__tab--active {
+        &::after {
+          bottom: auto;
+          right: -1px;
+          left: auto;
+          width: 2px;
+          height: 100%;
+          top: 0;
+        }
+      }
+    }
+  }
+}

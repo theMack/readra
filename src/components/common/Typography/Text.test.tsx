@@ -7,7 +7,7 @@ export type TextWeight = 'light' | 'regular' | 'medium' | 'semibold' | 'bold';
 export type TextVariant = 'default' | 'code' | 'caption' | 'quote' | 'label';
 export type TextDecoration = 'none' | 'underline' | 'line-through';
 export type TextTransform = 'none' | 'uppercase' | 'lowercase' | 'capitalize';
-export type TextElement = 'span' | 'strong' | 'em' | 'mark' | 'code' | 'del' | 'ins' | 'label' | 'time';
+export type TextElement = 'span' | 'strong' | 'em' | 'mark' | 'code' | 'del' | 'ins' | 'label' | 'time' | 'p';
 
 export interface TextProps {
   /**
